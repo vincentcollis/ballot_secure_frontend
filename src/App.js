@@ -2,10 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 
 import './App.css';
+import Registration from './components/Registration';
 
-import Admin from './containers/Admin';
-import DataPanel from './containers/DataPanel';
+import Admin from './containers/Admin.js';
+import DataPanel from './containers/DataPanel.js'
 import MainPage from './containers/MainPage.js'
+import Voter from './containers/Voter.js'
+import Ballot from './components/Ballot.js'
+import RegisterToVote from './components/Registration.js'
 
 function App() {
 
@@ -23,7 +27,21 @@ const routes = [
         component: DataPanel,
       }
     ]
-  }
+  },
+  {
+    path:"/voter",
+    component: Voter,
+    route: [
+      {
+        path:"/voter/ballot",
+        component: Ballot,
+      },
+      {
+        path:"/voter/registertovote",
+        component: RegisterToVote,
+      },
+    ]
+  },
 ]
 
 
