@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-do
 import './App.css';
 import Registration from './components/Registration';
 
+import NavBar from './components/NavBar.js'
 import Admin from './containers/Admin.js';
 import DataPanel from './containers/DataPanel.js'
 import MainPage from './containers/MainPage.js'
@@ -13,6 +14,7 @@ import RegisterToVote from './components/Registration.js'
 
 function App() {
 
+// array of routes for the app
 const routes = [
   {
     path:"/home",
@@ -44,7 +46,6 @@ const routes = [
   },
 ]
 
-
 function RouteWithSubRoutes(route) {
   return (
     <Route
@@ -60,12 +61,12 @@ function RouteWithSubRoutes(route) {
   return (
     <>
       <Router>
-        <nav>
-          <NavLink to="/home">Home</NavLink>
-          <NavLink to="/login">Login</NavLink>
-        </nav>
-
+        <NavBar/>
           <Switch>
+            {/* Route to set Home Page */}
+            <Route path="/" exact component={MainPage}/>
+
+            {/* Iterate through routes hash. Creates <Route/> for each */}
             {routes.map((route,i) => (
               <RouteWithSubRoutes key={i} {...route} />
             ))}
