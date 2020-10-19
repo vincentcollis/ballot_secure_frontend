@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
-import App from "./App";
+import App from "./App.js";
 import Login from "./pages/Login";
 import Error from "./pages/Error";
 import NotFound from "./pages/NotFound";
@@ -30,3 +30,34 @@ class AppWrapper extends Component {
 }
 
 export default withRouter(AppWrapper);
+
+// const routes = [
+// 	{
+// 	  path:"/home",
+// 	  component: MainPage,
+// 	},
+// 	{
+// 	  path:"/login",
+// 	  component: Admin,
+// 	  route: [
+// 		{
+// 		  path:"/login/panel",
+// 		  component: DataPanel,
+// 		}
+// 	  ]
+// 	},
+// 	{
+// 	  path:"/voter",
+// 	  component: Voter,
+// 	  route: [
+// 		{
+// 		  path:"/voter/ballot",
+// 		  component: Ballot,
+// 		},
+// 		{
+// 		  path:"/voter/registertovote",
+// 		  component: RegisterToVote,
+// 		},
+// 	  ]
+// 	},
+//   ]

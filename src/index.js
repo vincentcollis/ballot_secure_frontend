@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppWrapper from './AppWrapper';
+import App from './App.js'
 import {HashRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import 'core-js/stable';
@@ -9,7 +10,9 @@ import 'prismjs/themes/prism-coy.css';
 
 ReactDOM.render(
 	<HashRouter>
-		<AppWrapper></AppWrapper>
+	
+		<AppWrapper>
+		</AppWrapper>
 	</HashRouter>,
 	document.getElementById('root')
 );
