@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 import './App.css';
-import classNames from 'classnames';
+
 import {AppTopbar} from './AppTopbar';
 import NavBar from './components/visualizations/NavBar.js'
 import Admin from './containers/Admin.js';
@@ -10,30 +10,23 @@ import MainPage from './containers/MainPage.js'
 import Voter from './containers/Voter.js'
 import Ballot from './components/visualizations/Ballot.js'
 import RegisterToVote from './components/visualizations/Registration.js'
-import { Toolbar } from 'primereact/toolbar';
-import { Button } from 'primereact/button';
+
+import {ProgressBar} from 'primereact/components/progressbar/ProgressBar';
 import 'primereact/resources/primereact.min.css';
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
 import '@fullcalendar/timegrid/main.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
-
-
- 
-   
-
+import './App.css';
 
 function App (){ 
 
-    
   return(
       <>
         <div className="card">
         <NavBar />
         <MainPage />
-        {/* <DataPanel /> */}
         </div>
       </>
   )
