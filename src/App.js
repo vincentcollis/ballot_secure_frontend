@@ -6,7 +6,7 @@ import EmptyPage from './components/EmptyPage.js'
 import NavBar from './components/visualizations/NavBar.js'
 import MainPage from './containers/MainPage.js'
 
-// import {AppTopbar} from './AppTopbar';
+import {AppTopbar} from './AppTopbar';
 
 // import Admin from './containers/Admin.js';
 // import DataPanel from './containers/DataPanel.js'
@@ -26,11 +26,14 @@ import './App.css';
 function App (){ 
 
   return(
-      <>
-        <EmptyPage>
-        </EmptyPage>
-      </>
-  )
+         <div className="p-grid">
+                <div className="p-col-12">
+                    <AppTopbar />
+                    <NavBar />
+                    <MainPage />
+                </div>
+            </div>
+        );
 }
 
 export default App

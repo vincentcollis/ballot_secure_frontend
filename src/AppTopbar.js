@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import {InputText} from 'primereact/inputtext';
 import {InputSwitch} from 'primereact/inputswitch';
 import 'primeflex/primeflex.css';
+import './App.css';
 
 export class AppTopbar extends Component {
 
@@ -42,32 +43,34 @@ export class AppTopbar extends Component {
     }
 
     render() {
-        let topbarItemsClassName = classNames('topbar-menu fadeInDown', {'topbar-menu-visible': this.props.topbarMenuActive});
+        // let topbarItemsClassName = classNames('topbar-menu fadeInDown', {'topbar-menu-visible': this.props.topbarMenuActive});
 
         return <div className="topbar clearfix">
 
-            <button className="p-link" id="menu-button" onClick={this.props.onMenuButtonClick}>
+            {/* <button className="p-link" id="menu-button" onClick={this.props.onMenuButtonClick}>
                 <i className="pi pi-bars"></i>
-            </button>
+            </button> */}
 
-            <img className="logo" alt="apollo-layout" src="assets/layout/images/apollo_logo.png" />
+            <img className="logo" alt="vote-logo" src="https://resizeimage.net/mypic/yB856QxIh9PABJt8/Jv0bQ/vote-_-election-logo-template-.png" />
 
-            <button className="p-link profile" onClick={this.props.onTopbarMenuButtonClick}>
+            <button className="p-link" onClick={this.props.onTopbarMenuButtonClick}>
                 <span className="username">Sarah Miller</span>
                 <img src="assets/layout/images/avatar/avatar.png" alt="apollo-layout" />
-                <i className="pi pi-angle-down"></i>
+                {/* <i className="pi pi-angle-down"></i> */}
             </button>
 
-            <span className="topbar-search">
+
+
+            {/* <span className="topbar-search">
                 <InputText placeholder="Search"/>
                 <span className="pi pi-search"></span>
-            </span>
+            </span> */}
 
-            <span className="topbar-themeswitcher">
+            {/* <span className="topbar-themeswitcher">
                 <InputSwitch checked={this.props.darkTheme} onChange={this.props.onThemeChange}></InputSwitch>
-            </span>
+            </span> */}
 
-            <ul className={topbarItemsClassName}>
+            {/* <ul className={topbarItemsClassName}>
                 <li className={classNames({'menuitem-active': this.props.activeTopbarItem === 'profile'})}
                     onClick={(e) => this.onTopbarItemClick(e, 'profile')}>
                     <button className="p-link">
@@ -212,7 +215,7 @@ export class AppTopbar extends Component {
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> */}
         </div>;
     }
 }

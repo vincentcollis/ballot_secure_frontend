@@ -8,10 +8,8 @@ export default class EmptyPage extends Component {
         return (
             <div className="p-grid">
                 <div className="p-col-12">
-                    <div className="card">
                     <NavBar />
                     <MainPage />
-                    </div>
                 </div>
             </div>
         );
