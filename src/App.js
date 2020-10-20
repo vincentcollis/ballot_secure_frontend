@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 import './App.css';
 
-import {AppTopbar} from './AppTopbar';
+import EmptyPage from './components/EmptyPage.js'
 import NavBar from './components/visualizations/NavBar.js'
-import Admin from './containers/Admin.js';
-import DataPanel from './containers/DataPanel.js'
 import MainPage from './containers/MainPage.js'
-import Voter from './containers/Voter.js'
-import Ballot from './components/visualizations/Ballot.js'
-import RegisterToVote from './components/visualizations/Registration.js'
 
-import {ProgressBar} from 'primereact/components/progressbar/ProgressBar';
+// import {AppTopbar} from './AppTopbar';
+
+// import Admin from './containers/Admin.js';
+// import DataPanel from './containers/DataPanel.js'
+// import Voter from './containers/Voter.js'
+// import Ballot from './components/visualizations/Ballot.js'
+// import RegisterToVote from './components/visualizations/Registration.js'
+
+// import {ProgressBar} from 'primereact/components/progressbar/ProgressBar';
 import 'primereact/resources/primereact.min.css';
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
@@ -24,10 +27,8 @@ function App (){
 
   return(
       <>
-        <div className="card">
-        <NavBar />
-        <MainPage />
-        </div>
+        <EmptyPage>
+        </EmptyPage>
       </>
   )
 }

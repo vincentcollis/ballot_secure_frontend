@@ -9,6 +9,7 @@ import '@fullcalendar/daygrid/main.css';
 import '@fullcalendar/timegrid/main.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import { AppTopbar } from '../../AppTopbar';
 // import '../App.css';
 
 export default class NavBar extends Component {

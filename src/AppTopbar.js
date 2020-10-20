@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {InputText} from 'primereact/inputtext';
 import {InputSwitch} from 'primereact/inputswitch';
+import 'primeflex/primeflex.css';
 
 export class AppTopbar extends Component {
 

@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
+import NavBar from '../components/visualizations/NavBar.js'
+import MainPage from '../containers/MainPage.js'
 
-export class EmptyPage extends Component {
+export default class EmptyPage extends Component {
 
     render() {
         return (
             <div className="p-grid">
                 <div className="p-col-12">
                     <div className="card">
-                        <h1>Empty Page</h1>
-                        <p>Use this page to start from scratch and place your custom content.</p>
+                    <NavBar />
+                    <MainPage />
                     </div>
                 </div>
             </div>
