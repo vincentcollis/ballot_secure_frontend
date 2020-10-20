@@ -235,6 +235,7 @@ export class FormsDemo extends Component {
                         <Chips value={this.state.chipsValue} onChange={(e) => this.setState({chipsValue: e.value})}/>
                     </div>
                 </div>
+                
                 <div className="p-col-12 p-lg-6">
                     <div className="card card-w-title">
                         <h1>Checkboxes</h1>

@@ -11,7 +11,9 @@ export default class LandingPage extends Component {
         <>
             <div className="p-grid p-align-center">
                 <div className="p-col-6">
-                    <Button label="Voter"/>
+                    <Link to="/Voter">
+                        <Button label="Voter"/>
+                    </Link>
                 </div>
                 <div className="p-col-6">
                     <Link to="/login">

@@ -11,7 +11,7 @@ import Login from "./pages/Login.js"
 // import Admin from './containers/Admin.js';
 import DataPanel from './containers/DataPanel.js'
 // import MainPage from './containers/MainPage.js'
-// import Voter from './containers/Voter.js'
+import Voter from './containers/Voter.js'
 // import Ballot from './components/visualizations/Ballot.js'
 // import RegisterToVote from './components/visualizations/Registration.js'
 // import NotFound from './pages/NotFound'
@@ -28,15 +28,15 @@ import './App.css';
 function App (){ 
   
   return(
-
         <Router>
+
           <Switch>
+            <Route exactly path="/Voter" component={Voter}/>           
             <Route exactly path="/datapanel" component={DataPanel}/>           
             <Route exactly path="/login" component={Login}/>           
             <Route exactly path="/" component={LandingPage}/>            
           </Switch>
         </Router>
-      
   )
 }
 
