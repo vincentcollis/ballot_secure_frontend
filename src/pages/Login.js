@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
 import {InputText} from 'primereact/inputtext';
 import {Button} from "primereact/button";
+import { useHistory,Link } from 'react-router-dom';
 
-export default class Login extends Component {
+function Login() {
 
-	render() {
-		return <div className="login-body">
+	const history = useHistory();
+
+	return(
+		
+
+		<div className="login-body">
 			<div className="body-container">
 				<div className="p-grid p-nogutter">
 					<div className="p-col-12 p-lg-6 left-side">
 						<img src="assets/layout/images/logo-dark.png" alt="apollo-layout" className="logo"/>
-						<h1>Welcome</h1>
+						<h1>Ballot Secure</h1>
 						<p>
 							Sign in to start your session
 						</p>
@@ -28,7 +33,7 @@ export default class Login extends Component {
 										<InputText type="password" placeholder="Password"/>
 									</div>
 									<div className="p-col-6">
-										<Button label="Sign In" icon="pi pi-check" onClick={() => {window.location = "/#"}} />
+										<Button label="Sign In" icon="pi pi-check" onClick={() => history.push('/datapanel')}/>
 									</div>
 									<div className="p-col-6 password-container">
 										<a href="/#">Forgot Password?</a>
@@ -40,5 +45,7 @@ export default class Login extends Component {
 				</div>
 			</div>
 		</div>
-	}
+	)
 }
+
+export default Login

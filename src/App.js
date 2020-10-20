@@ -1,17 +1,22 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
+import React, {useState} from 'react'
+
 import './App.css';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 
-import {AppTopbar} from './AppTopbar';
+
 import NavBar from './components/visualizations/NavBar.js'
-import Admin from './containers/Admin.js';
+import LandingPage from '../src/pages/LandingPage.js'
+import Login from "./pages/Login.js"
+// import {AppTopbar} from './AppTopbar';
+// import Admin from './containers/Admin.js';
 import DataPanel from './containers/DataPanel.js'
-import MainPage from './containers/MainPage.js'
-import Voter from './containers/Voter.js'
-import Ballot from './components/visualizations/Ballot.js'
-import RegisterToVote from './components/visualizations/Registration.js'
+// import MainPage from './containers/MainPage.js'
+// import Voter from './containers/Voter.js'
+// import Ballot from './components/visualizations/Ballot.js'
+// import RegisterToVote from './components/visualizations/Registration.js'
+// import NotFound from './pages/NotFound'
+// import {ProgressBar} from 'primereact/components/progressbar/ProgressBar';
 
-import {ProgressBar} from 'primereact/components/progressbar/ProgressBar';
 import 'primereact/resources/primereact.min.css';
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
@@ -21,14 +26,17 @@ import 'primeflex/primeflex.css';
 import './App.css';
 
 function App (){ 
-
+  
   return(
-      <>
-        <div className="card">
-        <NavBar />
-        <MainPage />
-        </div>
-      </>
+
+        <Router>
+          <Switch>
+            <Route exactly path="/datapanel" component={DataPanel}/>           
+            <Route exactly path="/login" component={Login}/>           
+            <Route exactly path="/" component={LandingPage}/>            
+          </Switch>
+        </Router>
+      
   )
 }
 
