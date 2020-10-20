@@ -45,7 +45,7 @@ class Datapanel extends Component {
             themeColor: 'blue',
             configDialogActive: false
         };
-
+ //////////////// Click Handlers //////
         this.onDocumentClick = this.onDocumentClick.bind(this);
         this.onMenuClick = this.onMenuClick.bind(this);
         this.onMenuButtonClick = this.onMenuButtonClick.bind(this);
@@ -168,7 +168,7 @@ class Datapanel extends Component {
             staticMenuMobileActive: false
         })
     }
-
+////// FUNCTIONS for different displays///////////
     isTablet() {
         let width = window.innerWidth;
         return width <= 1024 && width > 640;
@@ -201,7 +201,7 @@ class Datapanel extends Component {
             overlayMenuActive: false
         });
     }
-
+// ////////Changing the Theme from Dark to Light///////
     changeMenuColor(event) {
         this.setState({darkTheme : event.darkTheme})
         this.onThemeChange();
@@ -264,6 +264,9 @@ class Datapanel extends Component {
         }
     }
 
+
+    // /////Functions and Variables that Change the Side Menu Display/////
+    
     createMenu() {
         this.menu = [
             {label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'},
