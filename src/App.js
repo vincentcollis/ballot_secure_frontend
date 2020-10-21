@@ -8,12 +8,14 @@ import NavBar from './components/visualizations/NavBar.js'
 import LandingPage from '../src/pages/LandingPage.js'
 import Login from "./pages/Login.js"
 
+
 // import {AppTopbar} from './AppTopbar';
 // import Admin from './containers/Admin.js';
 import DataPanel from './containers/DataPanel.js'
 // import MainPage from './containers/MainPage.js'
 import Voter from './containers/Voter.js'
-// import Ballot from './components/visualizations/Ballot.js'
+import Ballot from './components/visualizations/Ballot'
+import ThankYou from './components/visualizations/ThankYou.js'
 // import RegisterToVote from './components/visualizations/Registration.js'
 // import NotFound from './pages/NotFound'
 // import {ProgressBar} from 'primereact/components/progressbar/ProgressBar';
@@ -32,6 +34,8 @@ function App (){
         <Router>
 
           <Switch>
+            <Route excatly path="/Voter/Ballot/ThankYou" component={ThankYou}/>
+            <Route exactly path="/Voter/Ballot" component={Ballot}/>   
             <Route exactly path="/Voter" component={Voter}/>           
             <Route exactly path="/datapanel" component={DataPanel}/>           
             <Route exactly path="/login" component={Login}/>           

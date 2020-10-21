@@ -1,55 +1,58 @@
 
-let bronxCountyCities = 
+let bronxCountyCities = [
+    {label: 'Select State', value: null},
+    {label:'Baychester', value: 'Baychester'},
+    {label:'Bedford Park', value: 'Bedford Park'},
+    {label:'Belmont', value: 'Belmont'},
+    {label:'Bronx', value: 'Bronx'},
+    {label:'Bronxdale', value: 'Bronxdale'},
+    {label:'Charlotte Gardens', value: 'Charlotte Gardens'},
+    {label:'City Island', value: 'City Island'},
+    {label:'Clason Point', value: 'Clason Point'},
+    {label:'Concourse Village', value: 'Concourse Village'},
+    {label:'Co-Op City', value: 'Co-Op City'},
+    {label:'Country Club', value: 'Country Club'},
+    {label:'Dodgewood', value: 'Dodgewood'},
+    {label:'East Tremont', value: 'East Tremont'},
+    {label:'Eastchester Bay', value: 'Eastchester Bay'},
+    {label:'Eastchester Heights', value: 'Eastchester Heights'},
+    {label:'Fieldston', value: 'Fieldston'},
+    {label:'Fordham', value: 'Fordham'},
+    {label:'Fordham Hill', value: 'Fordham Hill'},
+    {label:'High Bridge', value: 'High Bridge'},
+    {label:'Hunts Point', value: 'Hunts Point'},
+    {label:'Jamie Towers', value: 'Jamie Towers'},
+    {label:'Kings Bridge', value: 'Kings Bridge'},
+    {label:'Kings Bridge Heights', value: 'Kings Bridge Heights'},
+    {label:'Locust Point', value: 'Locust Point'},
+    {label:'Melrose', value: 'Melrose'},
+    {label:'Middletown', value: 'Middletown'},
+    {label:'Morris Heights', value: 'Morris Heights'},
+    {label:'Morris Park', value: 'Morris Park'},
+    {label:'Morrisania', value: 'Morrisania'},
+    {label:'Mott Haven', value: 'Mott Haven'},
+    {label:'Park of Edgewater', value: 'Park of Edgewater'},
+    {label:'Parkchester', value: 'Parkchester'},
+    {label:'Pelham Bay', value: 'Pelham Bay'},
+    {label:'Plaza Borinquen', value: 'Plaza Borinquen'},
+    {label:'Plaza De Los Angeles', value: 'Plaza De Los Angeles'},
+    {label:'Port Morris', value: 'Port Morris'},
+    {label:'Riverdale', value: 'Riverdale'},
+    {label:'Schuylerville', value: 'Schuylerville'},
+    {label:'Silver Beach', value: 'Silver Beach'},
+    {label:'Soundview Park Homes', value: 'Soundview Park Homes'},
+    {label:'Spencer Estates', value: 'Spencer Estates'},
+    {label:'Spuyten Duyvil', value: 'Spuyten Duyvil'},
+    {label:'Throgs Neck', value: 'Throgs Neck'},
+    {label:'Tremont', value: 'Tremont'},
+    {label:'Unionport', value: 'Unionport'},
+    {label:'University Heights', value: 'University Heights'},
+    {label:'Van Nest', value: 'Van Nest'},
+    {label:'Wakefield', value: 'Wakefield'},
+    {label:'West Farms', value: 'West Farms'},
+    {label:'Westchester', value: 'Westchester'},
+    {label:'Williams Bridge', value: 'Williams Bridge'},
+    {label:'Woodlawn', value: 'Woodlawn'},
+]
 
-Baychester
-Bedford Park
-Belmont
-Bronx
-Bronxdale
-Charlotte Gardens
-City Island
-Clason Point
-Concourse Village
-Co-Op City
-Country Club
-Dodgewood
-East Tremont
-Eastchester Bay
-Eastchester Heights
-Fieldston
-Fordham
-Fordham Hill
-High Bridge
-Hunts Point
-Jamie Towers
-Kings Bridge
-Kings Bridge Heights
-Locust Point
-Melrose
-Middletown
-Morris Heights
-Morris Park
-Morrisania
-Mott Haven
-Park of Edgewater
-Parkchester
-Pelham Bay
-Plaza Borinquen
-Plaza De Los Angeles
-Port Morris
-Riverdale
-Schuylerville
-Silver Beach
-Soundview Park Homes
-Spencer Estates
-Spuyten Duyvil
-Throgs Neck
-Tremont
-Unionport
-University Heights
-Van Nest
-Wakefield
-West Farms
-Westchester
-Williams Bridge
-Woodlawn
+export default bronxCountyCities
