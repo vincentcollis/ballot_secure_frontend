@@ -36,11 +36,15 @@ import '../App.css';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
+
+
 class Datapanel extends Component {
 
     constructor() {
         super();
         this.state = {
+            voteAPI: [],
+
             layoutMode: 'static',
             overlayMenuActive: false,
             staticMenuDesktopInactive: false,
@@ -51,6 +55,7 @@ class Datapanel extends Component {
             menuActive: false,
             themeColor: 'blue',
             configDialogActive: false,
+
             lineData: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [
@@ -68,7 +73,30 @@ class Datapanel extends Component {
                     }
                 ]
             },
+
+            pieData: {
+                labels: ['Alexandria Ocasio-Cortez','John Cummings'],
+                datasets: [
+                    {
+                        data: [10, 10],
+                        backgroundColor: [
+                            "#FFC107",
+                            "#03A9F4",
+                            "#4CAF50"
+                        ],
+                        hoverBackgroundColor: [
+                            "#FFE082",
+                            "#81D4FA",
+                            "#A5D6A7"
+                        ]
+                    }]
+            },
         };
+
+        
+
+        
+        
  //////////////// Click Handlers //////
         this.onDocumentClick = this.onDocumentClick.bind(this);
         this.onMenuClick = this.onMenuClick.bind(this);
@@ -86,6 +114,8 @@ class Datapanel extends Component {
         this.onConfigClick = this.onConfigClick.bind(this);
         this.createMenu();
     }
+
+  
 
     onMenuClick(event) {
         this.menuClick = true;
@@ -501,7 +531,58 @@ class Datapanel extends Component {
 
 
     //////////Rendering functions/////////
+    componentDidMount() {
+        fetch('http://localhost:3000/votes')
+            .then(res => res.json())
+            .then(voteAPI => this.setState({voteAPI}))
+            
+            // pieData: {
+            //     labels: ['Alexandria Ocasio-Cortez','John Cummings'],
+            //     datasets
+    }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     prevState
+    // }
+    
+
+    presidentVotes = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 1 || ele.candidate_id === 2)
+        return result.length
+    }
+
+    findBidenVotes = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 1)
+        return result.length
+    }
+    
+    
+    findTrumpVotes = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 2)
+        return result.length
+    }
+
+    aoc = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 5)
+        return result.length
+    }
+    
+    jcumm = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 6)
+        return result.length
+    }
+     
+    
+    
+
+
     render() {
+        console.log(this.state.voteAPI)
         const layoutClassName = classNames('layout-wrapper', {
             'layout-horizontal': this.state.layoutMode === 'horizontal',
             'layout-overlay': this.state.layoutMode === 'overlay',
@@ -571,7 +652,7 @@ class Datapanel extends Component {
                                 {/* The Light Blue box */}
                                 <div className="p-col-8 p-md-4">
                                     <div className="overview-box overview-box-1"><h1>TOTAL BALLOTS</h1>
-                                        <div className="overview-value">25,620</div>
+                                        <div className="overview-value">{this.state.voteAPI.length}</div>
                                         <div className="overview-ratio">
                                             <div className="overview-direction">
                                                 <i className="pi pi-arrow-up" ></i>
@@ -586,8 +667,10 @@ class Datapanel extends Component {
                                 {/*  Green Box */}
                                 <div className="p-col-12 p-md-4">
                                     <div className="overview-box overview-box-2">
-                                        <h1>BALLOTS/STATE</h1>
-                                        <div className="overview-value">9521</div>
+                                        <h1>Votes Ballots for President</h1>
+                                        <div className="overview-value">
+                                            {this.presidentVotes()}
+                                        </div>
                                         <div className="overview-ratio">
                                             {/* <div className="overview-direction">
                                                 <i className="pi pi-arrow-up" ></i>
@@ -602,8 +685,8 @@ class Datapanel extends Component {
                                 {/* Orange Box */}
                                 <div className="p-col-12 p-md-4">
                                     <div className="overview-box overview-box-3">
-                                        <h1>LEADING CANDIDATES</h1>
-                                        <div className="overview-value">George Washington(W-V) <br></br>John Quincy Adams(W-F) </div>
+                                        <h1>Presidential Race</h1>
+                                        <div className="overview-value">Joe Biden({this.findBidenVotes()}) <br></br>Donald Trump({this.findTrumpVotes()}) </div>
                                         
                                         <div className="overview-ratio">
                                             <div className="overview-direction">
@@ -628,12 +711,13 @@ class Datapanel extends Component {
                                     <h1 className="centerText">Linear Chart</h1>
                                     <Chart type="line" data={this.state.lineData}/>
                                 </div>
+                            </div>
+                            {/* Pie Chart */}
 
-                                <div className="p-col-4 card">
-                                    <Panel />
-                                </div>            
-
-                            </div> 
+                            <div className="card">
+                        <h1 className="centerText">Pie Chart</h1>
+                        <Chart type="pie" data={this.state.pieData} height="150"/>
+                    </div> 
                         
                     </div>  
 

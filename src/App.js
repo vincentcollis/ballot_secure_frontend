@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-
+import React, {Component} from 'react'
 import './App.css';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 
@@ -7,6 +6,7 @@ import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-do
 import NavBar from './components/visualizations/NavBar.js'
 import LandingPage from '../src/pages/LandingPage.js'
 import Login from "./pages/Login.js"
+
 
 
 // import {AppTopbar} from './AppTopbar';
@@ -28,24 +28,59 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './App.css';
 
-function App (){ 
-  
-  return(
-        <Router>
+const APIURL = 'http://localhost:3000/'
 
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       selectedName: null,
+       ballotChoices:{
+         president: null,
+         senate: null,
+         congress: null
+       }
+    }
+  }
+  
+
+  getSelectedName = (params) => {
+    
+    // console.log(params)
+    this.setState({selectedName: params})
+  }
+
+  getBallotChoices = () =>{
+
+  }
+  
+
+  
+
+  
+  render() {
+
+    // console.log(this.state)
+    return (
+      <div>
+        <Router>
           <Switch>
             <Route excatly path="/Voter/Ballot/ThankYou" component={ThankYou}/>
-            <Route exactly path="/Voter/Ballot" component={Ballot}/>   
-            <Route exactly path="/Voter" component={Voter}/>           
+            <Route exactly path="/Voter/Ballot" component={()=> <Ballot getBallotChoices={this.getBallotChoices} />}/>   
+            <Route exactly path="/Voter" component={() => <Voter getSelectedName={this.getSelectedName}/>}/>   
             <Route exactly path="/datapanel" component={DataPanel}/>           
             <Route exactly path="/login" component={Login}/>           
             <Route exactly path="/" component={LandingPage}/>            
           </Switch>
         </Router>
-  )
+      </div>
+    )
+  }
 }
 
-export default App
+
 
 
 

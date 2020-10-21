@@ -55,28 +55,28 @@ export default class Voter extends Component {
     }
     
     handleSubmit = (event) => {
+        
         event.preventDefault()
         let data = this.state.apiData
-        console.log('submit button')
+        // console.log('submit button')
         
         let filteredData = data.filter(ele=> ele.city === this.state.dropdownCity)
         // return all names from filterData
         let names = []
         filteredData.map(ele => {
-            return(
-                names.push(`${ele.firstname} ${ele.lastname}`)
-            )
-            // console.log(ele)
+            return(names.push(`${ele.firstname} ${ele.lastname}`))
         })
-
         this.setState({names})
     }
-    
-    
-    
+
+    handleNameChange = (event) => {
+        event.preventDefault()
+        this.setState({dropdownName: event.value})
+    }
     
     render() {
-        console.log(this.state.names)
+        // console.log(this.props.getSelectedName)
+        // this.props.getSelectedName(this.state.dropdownName)
         return (
             <>
                 <div className="p-grid p-fluid">
@@ -118,9 +118,9 @@ export default class Voter extends Component {
                     <div className="p-col-4 card card-w-title">
                         <h1>Select Your Name</h1>
                         <Dropdown 
-                        options={this.state.names} 
+                            options={this.state.names} 
                             value={this.state.dropdownName} 
-                            onChange={event => this.setState({dropdownName: event.value})}
+                            onChange={this.handleNameChange}
                               
                             autoWidth={false} 
                         />
@@ -138,6 +138,14 @@ export default class Voter extends Component {
             </>
         );
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState !== this.state){
+            // this.props.getSelectedName(this.state.dropdownName)
+            // console.log("working")
+        }
+    }
+    
 
     componentDidMount() {
         fetch(APIURL)

@@ -5,26 +5,70 @@ import {Button} from 'primereact/button';
 
 import {Link} from 'react-router-dom'
 
+const APIURLCANDIDATES = 'http://localhost:3000/candidates'
+const APIURLVOTES = 'http://localhost:3000/votes/'
+
 export default class Ballot extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
+            candidateAPI: [],
             radioValuePres: null,
             radioValueSen: null,
             radioValueCon: null,
+            }
         }
-    }
     
+    matchCandidate = (candidate) => {
+        let candidateAPI = this.state.candidateAPI
+
+        let result = candidateAPI.find(ele =>  console.log(ele.name))
+        // console.log(candidate)
+        // console.log(this.state.candidateAPI)
+        console.log(candidate.name) 
+        
+    }
 
     handleClick = (event) => {
         event.preventDefault()
+
+        let candidateid = [1,3,5]
         
-        console.log("click event")
+        candidateid.forEach(ele => {
+            const postObject = {
+                candidate_id: ele,
+                ballot_id: 5,
+            }
+    
+            const options = {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json",
+                    "accept": "application/json"
+                    },
+                body: JSON.stringify(postObject
+                )
+            }
+            
+            fetch('http://localhost:3000/votes', options)
+                .then(res => res.json())
+                .then(console.log)
+        });
+
+        
+    }
+    
+
+    updateVotes = () => {
+       
+
+        // fetch(APIURL)
     }
     
     
     render() {
+        // console.log(this.state)
         return (
             <>
             <div className="p-grid p-fluid">
@@ -78,12 +122,21 @@ export default class Ballot extends Component {
                     </div>
                 </div>
                 <div className="card card-w-title p-col-1">
-                    <Link to="/Voter/Ballot/ThankYou" >
-                        <Button label="Cast Vote!" />
-                    </Link>
+
+                    <Link to="/Voter/Ballot/ThankYou">
+                        <button label="Cast Vote!" className="p-button-link" onClick={this.handleClick} > Cast Vote</button>    
+                    </Link>                    
                 </div>
             </>
 
         )
     }
+
+
+    componentDidMount() {
+        fetch(APIURLCANDIDATES)
+            .then(res => res.json())
+            .then(data => this.setState({candidateAPI: data }))
+    }
+    
 }
