@@ -49,11 +49,12 @@ export class AppTopbar extends Component {
                 <i className="pi pi-bars"></i>
             </button>
 
-            <img className="logo" alt="apollo-layout" src="assets/layout/images/apollo_logo.png" />
+            <img className="logo" alt="apollo-layout" src="https://www.lssmn.org/sites/default/files/inline-images/VOTE%20HEADERweb.jpg" />
 
             <button className="p-link profile" onClick={this.props.onTopbarMenuButtonClick}>
                 <span className="username">Sarah Miller</span>
-                <img src="assets/layout/images/avatar/avatar.png" alt="apollo-layout" />
+                
+                <img src="assets/layout/images/avatar/profile.png" alt="apollo-layout" />
                 <i className="pi pi-angle-down"></i>
             </button>
 

@@ -19,6 +19,9 @@ import {ChartsDemo} from '../components/ChartsDemo';
 import {MiscDemo} from '../components/MiscDemo';
 import {EmptyPage} from '../components/EmptyPage';
 import {Documentation} from '../components/Documentation';
+import {Panel} from 'primereact/components/panel/Panel';
+import {Checkbox} from 'primereact/components/checkbox/Checkbox';
+import {Editor} from 'primereact/components/editor/Editor'
 
 import {Chart} from 'primereact/chart';
 
@@ -560,10 +563,11 @@ class Datapanel extends Component {
                         <Route path="/empty" component={EmptyPage}/>
                         <Route path="/documentation" component={Documentation}/>
                     </div>
-                        <div className='p-grid p-fluid'>
-                            <div className="p-col-12 p-lg-12">
+                    
+                    <div className='p-grid p-fluid'>
+                        <div className="p-col-12 p-lg-12">
                                 
-                                <div className="p-grid dashboard">
+                            <div className="p-grid dashboard">
                                 {/* The Light Blue box */}
                                 <div className="p-col-8 p-md-4">
                                     <div className="overview-box overview-box-1"><h1>TOTAL BALLOTS</h1>
@@ -599,34 +603,41 @@ class Datapanel extends Component {
                                 <div className="p-col-12 p-md-4">
                                     <div className="overview-box overview-box-3">
                                         <h1>LEADING CANDIDATES</h1>
-                                        <div className="overview-value">George Washington(W) <br></br>John Quincy Adams(F) </div>
+                                        <div className="overview-value">George Washington(W-V) <br></br>John Quincy Adams(W-F) </div>
                                         
                                         <div className="overview-ratio">
                                             <div className="overview-direction">
                                                 <i className="pi pi-arrow-up"></i>
                                             </div>
                                             <div className="overview-ratio-value">
-                                                19%
+                                                R
                                             </div>
                                         </div>
                                         
                                         <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout"/>
                                     </div>
                                 </div>
-
                             </div>
-
+                        </div>
                                 
-                                
-                            </div>
-                            <div className="p-col-8 p-lg-8">
-                                <div className="card">
+                {/* Line Chart */}
+                            
+                       
+                            <div className="p-col ">
+                                <div className="p-col-8 p-lg-6 card">
                                     <h1 className="centerText">Linear Chart</h1>
                                     <Chart type="line" data={this.state.lineData}/>
                                 </div>
-                            </div>
-                        </div>            
-                    <AppFooter/>
+
+                                <div className="p-col-4 card">
+                                    <Panel />
+                                </div>            
+
+                            </div> 
+                        
+                    </div>  
+
+                    {/* <AppFooter/> */}
 
                     {this.state.staticMenuMobileActive && <div className="layout-mask"></div>}
                 </div>
