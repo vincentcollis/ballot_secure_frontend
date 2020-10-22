@@ -46,9 +46,9 @@ export default class App extends Component {
   }
   
 
-  getSelectedName = (params) => {
-    
-    // console.log(params)
+  getSelectedName = (event, params) => {
+    event.preventDefault()
+    console.log(params)
     this.setState({selectedName: params})
   }
 
@@ -56,13 +56,15 @@ export default class App extends Component {
 
   }
   
-
+  updateAPI = () => {
+    fetch(APIURL)
+  }
   
 
   
   render() {
 
-    // console.log(this.state)
+    
     return (
       <div>
         <Router>

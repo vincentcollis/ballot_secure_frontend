@@ -89,9 +89,9 @@ export default class Voter extends Component {
                     </div>
                 </div>
 
-                <div className="p-grid p-fluid">
+                <div className="p-grid p-dir-col">
                     
-                    <div className="p-col-4 card card-w-title">
+                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
                         <h1>State</h1>
                         <Dropdown options={this.state.states} value={this.state.dropdownState} 
                             onChange={this.handleStateChange} 
@@ -99,23 +99,27 @@ export default class Voter extends Component {
                         />
                     </div>
 
-                    <div className="p-col-4 card card-w-title">
+                    <p></p>
+
+                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
                         <h1>County</h1>
                         <Dropdown options={this.state.counties} value={this.state.dropdownCounty} 
                         onChange={this.handleCountyChange} 
                         autoWidth={false} />
                     </div>
+                    <p></p>
 
-                    <div className="p-col-4 card card-w-title">
+                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
                         <h1>City</h1>
                         <Dropdown options={this.state.cities} value={this.state.dropdownCity}  autoWidth={false} 
                             onChange={(event) => this.setState({dropdownCity: event.value})}
                         />
                     </div>
+                    <p></p>
 
                     <button onClick={this.handleSubmit}> Submit </button>
-                    
-                    <div className="p-col-4 card card-w-title">
+                    <p></p>
+                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
                         <h1>Select Your Name</h1>
                         <Dropdown 
                             options={this.state.names} 

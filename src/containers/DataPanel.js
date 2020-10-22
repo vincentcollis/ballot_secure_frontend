@@ -78,7 +78,7 @@ class Datapanel extends Component {
                 labels: ['Alexandria Ocasio-Cortez','John Cummings'],
                 datasets: [
                     {
-                        data: [10, 10],
+                        data: [50, 50],
                         backgroundColor: [
                             "#FFC107",
                             "#03A9F4",
@@ -90,6 +90,24 @@ class Datapanel extends Component {
                             "#A5D6A7"
                         ]
                     }]
+            },
+
+            barData: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'My First dataset',
+                        backgroundColor: '#03A9F4',
+                        borderColor: '#03A9F4',
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    },
+                    {
+                        label: 'My Second dataset',
+                        backgroundColor: '#FFC107',
+                        borderColor: '#FFC107',
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    }
+                ]
             },
         };
 
@@ -528,13 +546,19 @@ class Datapanel extends Component {
             }
         ];
     }
-
+    // [this.aoc(),this.jcumm()]
 
     //////////Rendering functions/////////
     componentDidMount() {
         fetch('http://localhost:3000/votes')
             .then(res => res.json())
-            .then(voteAPI => this.setState({voteAPI}))
+            .then((voteAPI) =>{
+                this.setState({
+                    voteAPI: voteAPI,
+                    // [pieData.datasets[0].data]: [100,90]
+                })
+            })
+            
             
             // pieData: {
             //     labels: ['Alexandria Ocasio-Cortez','John Cummings'],
@@ -542,9 +566,13 @@ class Datapanel extends Component {
     }
 
     // componentDidUpdate(prevProps, prevState) {
-    //     prevState
+    //     if(prevState.pieData !== this.state.pieData){
+    //         this.setState({
+    //             [this.state.pieData.datasets[0].data]: [...this.state.pieData.datasets[0].data, [this.aoc,this.jcumm]]
+    //         })
+    //     }
     // }
-    
+    // this.setState({ toDoNotes: [...this.state.toDoNotes, newNote]})
 
     presidentVotes = () => {
         let data =  this.state.voteAPI
@@ -577,12 +605,32 @@ class Datapanel extends Component {
         return result.length
     }
      
+    setPieData = () => {
+        return {
+            labels: ['Alexandria Ocasio-Cortez','John Cummings'],
+            datasets: [
+                {
+                    data: [this.aoc(), this.jcumm()],
+                    backgroundColor: [
+                        "#FFC107",
+                        "#03A9F4",
+                        "#4CAF50"
+                    ],
+                    hoverBackgroundColor: [
+                        "#FFE082",
+                        "#81D4FA",
+                        "#A5D6A7"
+                    ]
+                }]
+        }
+    }
     
     
 
 
     render() {
-        console.log(this.state.voteAPI)
+
+        
         const layoutClassName = classNames('layout-wrapper', {
             'layout-horizontal': this.state.layoutMode === 'horizontal',
             'layout-overlay': this.state.layoutMode === 'overlay',
@@ -702,24 +750,30 @@ class Datapanel extends Component {
                                 </div>
                             </div>
                         </div>
-                                
-                {/* Line Chart */}
-                            
-                       
-                            <div className="p-col ">
-                                <div className="p-col-8 p-lg-6 card">
-                                    <h1 className="centerText">Linear Chart</h1>
-                                    <Chart type="line" data={this.state.lineData}/>
-                                </div>
-                            </div>
-                            {/* Pie Chart */}
-
-                            <div className="card">
-                        <h1 className="centerText">Pie Chart</h1>
-                        <Chart type="pie" data={this.state.pieData} height="150"/>
-                    </div> 
+                    </div>
+                    
+                    {/* Line Chart */}
+                    <div className="p-col ">
+                        <div className="p-col-8 p-lg-6 card">
+                            <h1 className="centerText">Votes Per Day</h1>
+                            <Chart type="line" data={this.state.lineData}/>
+                        </div>
+                    </div>
                         
-                    </div>  
+                        {/* Pie Chart */}
+
+                        <div className="card">
+                            <h1 className="centerText">New York Congressional 14th District Race</h1>
+                            <Chart type="pie" data={this.setPieData()} height="150"/>
+                            {/* <Chart type="pie" data={this.state.pieData} height="150"/> */}
+                        </div> 
+
+                    {/* Bar Chart */}
+
+                    <div className="card">
+                        <h1 className="centerText">Bar Chart</h1>
+                        <Chart type="bar" data={this.state.barData}/>
+                    </div>
 
                     {/* <AppFooter/> */}
 
