@@ -57,16 +57,21 @@ class Datapanel extends Component {
             configDialogActive: false,
 
             lineData: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Oct28th', 'Oct29th', 'Oct30th', 'Oct 31st', 'Nov 1st', 'Nov 2nd'],
                 datasets: [
                     {
-                        label: 'First Dataset',
+                        label: 'Presidential Race',
                         data: [65, 59, 80, 81, 56, 55, 40],
                         fill: false,
                         borderColor: '#03A9F4'
+                    },                    {
+                        label: 'New York Senate Race',
+                        data: [80, 20, 60, 32, 45, 23, 46],
+                        fill: false,
+                        borderColor: '#4287f5'
                     },
                     {
-                        label: 'Second Dataset',
+                        label: 'New York Congressional 14th District Race',
                         data: [28, 48, 40, 19, 86, 27, 90],
                         fill: false,
                         borderColor: '#FFC107'
@@ -74,35 +79,35 @@ class Datapanel extends Component {
                 ]
             },
 
-            pieData: {
-                labels: ['Alexandria Ocasio-Cortez','John Cummings'],
-                datasets: [
-                    {
-                        data: [50, 50],
-                        backgroundColor: [
-                            "#FFC107",
-                            "#03A9F4",
-                            "#4CAF50"
-                        ],
-                        hoverBackgroundColor: [
-                            "#FFE082",
-                            "#81D4FA",
-                            "#A5D6A7"
-                        ]
-                    }]
-            },
+            // pieData: {
+            //     labels: ['Alexandria Ocasio-Cortez','John Cummings'],
+            //     datasets: [
+            //         {
+            //             data: [50, 50],
+            //             backgroundColor: [
+            //                 "#FFC107",
+            //                 "#03A9F4",
+            //                 "#4CAF50"
+            //             ],
+            //             hoverBackgroundColor: [
+            //                 "#FFE082",
+            //                 "#81D4FA",
+            //                 "#A5D6A7"
+            //             ]
+            //         }]
+            // },
 
             barData: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Candidates'],
                 datasets: [
                     {
-                        label: 'My First dataset',
+                        label: 'Kirsten Gillibrand',
                         backgroundColor: '#03A9F4',
                         borderColor: '#03A9F4',
                         data: [65, 59, 80, 81, 56, 55, 40]
                     },
                     {
-                        label: 'My Second dataset',
+                        label: 'Chele Farley',
                         backgroundColor: '#FFC107',
                         borderColor: '#FFC107',
                         data: [28, 48, 40, 19, 86, 27, 90]
@@ -604,6 +609,40 @@ class Datapanel extends Component {
         let result = data.filter((ele)=> ele.candidate_id === 6)
         return result.length
     }
+
+    gilbrand = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 3)
+        return result.length
+    }
+
+    farley = () => {
+        let data =  this.state.voteAPI
+        let result = data.filter((ele)=> ele.candidate_id === 4)
+        return result.length
+    }
+
+    setBarData = () => {
+        return {
+                labels: ['Candidates'],
+                datasets: [
+                    {
+                        label: 'Kirsten Gillibrand',
+                        backgroundColor: '#03A9F4',
+                        borderColor: '#03A9F4',
+                        data: [this.gilbrand()]
+                    },
+                    {
+                        label: 'Chele Farley',
+                        backgroundColor: '#bf1600',
+                        borderColor: '#bf1600',
+                        data: [this.farley()]
+                    }
+                ]
+            
+        }
+    }
+    
      
     setPieData = () => {
         return {
@@ -612,19 +651,40 @@ class Datapanel extends Component {
                 {
                     data: [this.aoc(), this.jcumm()],
                     backgroundColor: [
-                        "#FFC107",
                         "#03A9F4",
-                        "#4CAF50"
+                        "#bf1600",
+                        
                     ],
                     hoverBackgroundColor: [
-                        "#FFE082",
-                        "#81D4FA",
-                        "#A5D6A7"
+                        "#74c0e3",
+                        "#c95647",
                     ]
                 }]
         }
     }
-    
+
+    multiAxisOptions = () => {
+        return{
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        fontColor: '#495057'
+                    },
+                    gridLines: {
+                        color: '#ebedef'
+                    }
+                }]
+            }
+        }
+    }
+
     
 
 
@@ -651,7 +711,7 @@ class Datapanel extends Component {
                            onTopbarMenuButtonClick={this.onTopbarMenuButtonClick}
                            onTopbarItemClick={this.onTopbarItemClick}/>
 
-        {/* SideBar Menu  */}
+                {/* SideBar Menu  */}
 
                 <div className='layout-menu-container' onClick={this.onMenuClick}>
                     <div className="layout-menu-content">
@@ -698,7 +758,7 @@ class Datapanel extends Component {
                                 
                             <div className="p-grid dashboard">
                                 {/* The Light Blue box */}
-                                <div className="p-col-8 p-md-4">
+                                <div className="p-col-12 p-md-4">
                                     <div className="overview-box overview-box-1"><h1>TOTAL BALLOTS</h1>
                                         <div className="overview-value">{this.state.voteAPI.length}</div>
                                         <div className="overview-ratio">
@@ -751,28 +811,32 @@ class Datapanel extends Component {
                             </div>
                         </div>
                     </div>
-                    
-                    {/* Line Chart */}
-                    <div className="p-col ">
-                        <div className="p-col-8 p-lg-6 card">
-                            <h1 className="centerText">Votes Per Day</h1>
-                            <Chart type="line" data={this.state.lineData}/>
+
+                    <div className="p-grid p-fluid">
+                        <div className="p-col-12 p-lg-12">
+
+                            <div className="p-col-12 p-lg-12">
+                                {/* Line Chart */}
+                                <div className="p-col-6 card">
+                                    <h1 className="centerText">Early Voting Per Day</h1>
+                                    <Chart type="line" data={this.state.lineData} height="150"/>
+                                </div>
+                                
+                                    
+                                {/* Pie Chart */}
+                                <div className="p-col-6 card">
+                                    <h1 className="centerText">New York Congressional 14th District Race</h1>
+                                    <Chart type="pie" data={this.setPieData()} height="150"/>
+                                    {/* <Chart type="pie" data={this.state.pieData} height="150"/> */}
+                                </div>
+                                {/* Bar Chart */}
+
+                                <div className="p-col-6 card">
+                                    <h1 className="centerText">Bar Chart</h1>
+                                    <Chart type="horizontalBar" data={this.setBarData()} options={this.multiAxisOptions()}/>
+                                </div> 
+                            </div>
                         </div>
-                    </div>
-                        
-                        {/* Pie Chart */}
-
-                        <div className="card">
-                            <h1 className="centerText">New York Congressional 14th District Race</h1>
-                            <Chart type="pie" data={this.setPieData()} height="150"/>
-                            {/* <Chart type="pie" data={this.state.pieData} height="150"/> */}
-                        </div> 
-
-                    {/* Bar Chart */}
-
-                    <div className="card">
-                        <h1 className="centerText">Bar Chart</h1>
-                        <Chart type="bar" data={this.state.barData}/>
                     </div>
 
                     {/* <AppFooter/> */}

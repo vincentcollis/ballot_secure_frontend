@@ -78,68 +78,71 @@ export default class Voter extends Component {
         // console.log(this.props.getSelectedName)
         // this.props.getSelectedName(this.state.dropdownName)
         return (
-            <>
+            
                 <div className="p-grid p-fluid">
-                    
-                    <div className="p-col-12">
-                        <div className="card">
-                            <h1>Voter Page</h1>
-                            <p>Use this page to start from scratch and place your custom content.</p>
+
+                        <div className="p-col-12 card ">
+                            <div >
+                                {/* <img className="logo" src="https://www.lssmn.org/sites/default/files/inline-images/VOTE%20HEADERweb.jpg" alt="logo"/> */}
+                                <h1>Ballot Secure</h1>
+                                
+                                <p>4 Easy Steps to cast your vote!</p>
+                                <p>- Select your State,County, and City</p>
+                                <p>- Hit Submit </p>
+                                <p>- Select your name</p>
+                                <p>- Hit go Vote!</p>
+                            </div>
+                        </div><br/>
+                       
+                        <div className="p-col-6 card center">
+                            <div className="p-col-6 center card">
+                                <h1>State</h1>
+                                <Dropdown options={this.state.states} value={this.state.dropdownState} 
+                                    onChange={this.handleStateChange} 
+                                    autoWidth={false} 
+                                />
+                            </div><br/>
+                            
+                            <div className="p-col-6 center card">
+                                <h1>County</h1>
+                                <Dropdown options={this.state.counties} value={this.state.dropdownCounty} 
+                                onChange={this.handleCountyChange} 
+                                autoWidth={false} />
+                            </div><br/>
+
+                            <div className="p-col-6 center card">
+                                <h1>City</h1>
+                                <Dropdown options={this.state.cities} value={this.state.dropdownCity}  autoWidth={false} 
+                                    onChange={(event) => this.setState({dropdownCity: event.value})}
+                                />
+                            </div><br/>
+
+                            <div className="p-col-6 center card">
+                                <button onClick={this.handleSubmit}> Submit </button>
+                            </div><br/>
+
+                            <div className="p-col-6 center card">
+                                <h1>Select Your Name</h1>
+                                <Dropdown 
+                                    options={this.state.names} 
+                                    value={this.state.dropdownName} 
+                                    onChange={this.handleNameChange}
+                                    
+                                    autoWidth={false} 
+                                />
+                            </div><br/>
+
+                            <div className="p-col-6 center card">
+                            
+                                <button onClick={this.handleSubmit}><Link to="/Voter/Ballot" >Go Vote!</Link> </button>
+                                
+                            </div><br/>
+
+                            <div></div>
                         </div>
-                    </div>
-                </div>
-
-                <div className="p-grid p-dir-col">
                     
-                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
-                        <h1>State</h1>
-                        <Dropdown options={this.state.states} value={this.state.dropdownState} 
-                            onChange={this.handleStateChange} 
-                            autoWidth={false} 
-                        />
-                    </div>
-
-                    <p></p>
-
-                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
-                        <h1>County</h1>
-                        <Dropdown options={this.state.counties} value={this.state.dropdownCounty} 
-                        onChange={this.handleCountyChange} 
-                        autoWidth={false} />
-                    </div>
-                    <p></p>
-
-                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
-                        <h1>City</h1>
-                        <Dropdown options={this.state.cities} value={this.state.dropdownCity}  autoWidth={false} 
-                            onChange={(event) => this.setState({dropdownCity: event.value})}
-                        />
-                    </div>
-                    <p></p>
-
-                    <button onClick={this.handleSubmit}> Submit </button>
-                    <p></p>
-                    <div className="p-col-12 p-md-6 p-lg-3 p-shadow-24">
-                        <h1>Select Your Name</h1>
-                        <Dropdown 
-                            options={this.state.names} 
-                            value={this.state.dropdownName} 
-                            onChange={this.handleNameChange}
-                              
-                            autoWidth={false} 
-                        />
-                    </div>
-
                 </div>
-                <Link to="/Voter/Ballot" >
-                    <Button label="Go Vote!"/>
-                </Link>
-                
-                {/* onClick={this.handleSubmit}  */}
-           
-
-                
-            </>
+            
         );
     }
 
