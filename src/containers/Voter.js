@@ -9,6 +9,7 @@ import {InputText} from 'primereact/inputtext';
 import {Dropdown} from 'primereact/dropdown';
 import {AutoComplete} from 'primereact/autocomplete';
 import {Button} from 'primereact/button';
+import '../App.css';
 
 const APIURL = 'http://localhost:3000/registered_voters'
 
@@ -81,7 +82,7 @@ export default class Voter extends Component {
             
                 <div className="p-grid p-fluid">
 
-                        <div className="p-col-12 card ">
+                        <div className="p-col-12 card " id="ballot-top">
                             <div >
                                 {/* <img className="logo" src="https://www.lssmn.org/sites/default/files/inline-images/VOTE%20HEADERweb.jpg" alt="logo"/> */}
                                 <h1>Ballot Secure</h1>
@@ -94,7 +95,7 @@ export default class Voter extends Component {
                             </div>
                         </div><br/>
                        
-                        <div className="p-col-6 card center">
+                        <div className="p-col-6 card" id="ballot-top">
                             <div className="p-col-6 center card">
                                 <h1>State</h1>
                                 <Dropdown options={this.state.states} value={this.state.dropdownState} 

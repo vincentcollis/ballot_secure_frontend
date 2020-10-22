@@ -22,6 +22,7 @@ import {Documentation} from '../components/Documentation';
 import {Panel} from 'primereact/components/panel/Panel';
 import {Checkbox} from 'primereact/components/checkbox/Checkbox';
 import {Editor} from 'primereact/components/editor/Editor'
+import { InputTextarea } from 'primereact/inputtextarea';
 
 import {Chart} from 'primereact/chart';
 
@@ -720,12 +721,13 @@ class Datapanel extends Component {
                                  onRootMenuItemClick={this.onRootMenuItemClick}
                                  layoutMode={this.state.layoutMode} active={this.state.menuActive}/>
                         <div className="layout-menu-footer">
-                            <div className="layout-menu-footer-title">STATES</div>
+                            
+                            <div className="layout-menu-footer-title">NOTES</div>
 
                             <div className="layout-menu-footer-content">
-                                Maybe Drop Down Options For State Selection Here?
-                                <InputText />
-                                <Dropdown />
+                                
+                                <InputTextarea />
+                                
                                 {/* <ProgressBar value={50} showValue={false}></ProgressBar>
                                 Today
                                 <ProgressBar value={80} showValue={false}></ProgressBar>
@@ -815,7 +817,7 @@ class Datapanel extends Component {
                     <div className="p-grid p-fluid">
                         <div className="p-col-12 p-lg-12">
 
-                            <div className="p-col-12 p-lg-12">
+                            <div className="p-d-inline p-col-12 p-lg-12">
                                 {/* Line Chart */}
                                 <div className="p-col-6 card">
                                     <h1 className="centerText">Early Voting Per Day</h1>
@@ -832,7 +834,7 @@ class Datapanel extends Component {
                                 {/* Bar Chart */}
 
                                 <div className="p-col-6 card">
-                                    <h1 className="centerText">Bar Chart</h1>
+                                    <h1 className="centerText">New York Senate Race</h1>
                                     <Chart type="horizontalBar" data={this.setBarData()} options={this.multiAxisOptions()}/>
                                 </div> 
                             </div>

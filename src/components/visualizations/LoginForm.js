@@ -49,3 +49,20 @@ export default class LoginForm extends Component {
 
 
 
+let postObject = {
+  
+}
+
+let options = {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json"
+            },
+            body: JSON.stringify({postObject
+            })
+        }
+
+        fetch(URL, options)
+        .then(response => response.json())
+        .then(returnObject => console.log(returnObject))

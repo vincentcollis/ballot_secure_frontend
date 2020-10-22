@@ -41,7 +41,7 @@ export class AppTopbar extends Component {
     }
 
     render() {
-        let topbarItemsClassName = classNames('topbar-menu fadeInDown', {'topbar-menu-visible': this.props.topbarMenuActive});
+        // let topbarItemsClassName = classNames('topbar-menu fadeInDown', {'topbar-menu-visible': this.props.topbarMenuActive});
 
         return <div className="topbar clearfix">
 
@@ -52,7 +52,7 @@ export class AppTopbar extends Component {
             <img className="logo" alt="apollo-layout" src="https://www.lssmn.org/sites/default/files/inline-images/VOTE%20HEADERweb.jpg" />
 
             <button className="p-link profile" onClick={this.props.onTopbarMenuButtonClick}>
-                <span className="username">Sarah Miller</span>
+                <span className="username">Vincent Collis</span>
                 
                 <img src="assets/layout/images/avatar/profile.png" alt="apollo-layout" />
                 <i className="pi pi-angle-down"></i>
@@ -62,12 +62,12 @@ export class AppTopbar extends Component {
                 <InputText placeholder="Search"/>
                 <span className="pi pi-search"></span>
             </span>
-
+         
             <span className="topbar-themeswitcher">
                 <InputSwitch checked={this.props.darkTheme} onChange={this.props.onThemeChange}></InputSwitch>
             </span>
 
-            <ul className={topbarItemsClassName}>
+            {/* <ul className={topbarItemsClassName}>
                 <li className={classNames({'menuitem-active': this.props.activeTopbarItem === 'profile'})}
                     onClick={(e) => this.onTopbarItemClick(e, 'profile')}>
                     <button className="p-link">
@@ -212,7 +212,7 @@ export class AppTopbar extends Component {
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> */}
         </div>;
     }
 }
