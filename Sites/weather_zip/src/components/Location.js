@@ -5,38 +5,34 @@ const Location = (props) => {
     const [zip, setZip] = useState('')
     
     
-    const changeHandler = (event) =>{
-        event.preventDefault()
-
-        const key = event.target.id
+    function changeHandler(event){
+        
+        const key = event.target.name
         const value = event.target.value
 
+        console.log(value)
         switch (key) {
             case 'zipcode':
                 setZip(value)
                 break;
-        
             default:
                 break;
         }
     }
 
-    const enterHandler = (event) => {
+    function submitHandler(event){
         event.preventDefault()
-
-        if(event.key === 'Enter'){
-            // Send fetch request
-            console.log("Send fetch request")
-
-            // Store fetched data into redux
-        }
+        console.log("Send fetch request")    
+        //     // Using open weather app
+        //     // Store fetched data into redux
+        // }
 
     }
 
-    
+    // console.log(zip)
     return(
-        <form >
-            <input id='zipcode' type='text' onChange = {changeHandler} onKeyPress = {enterHandler} />
+        <form onSubmit={submitHandler}>
+            <input name = 'zipcode' type='text' onChange = {changeHandler} value ={zip} />
         </form>
     )
 }
