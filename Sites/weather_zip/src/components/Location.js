@@ -1,5 +1,11 @@
 import React, {useState} from 'react'
 
+import { connect } from 'react-redux'
+
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const URL = `api.openweathermap.org/data/2.5/weather?zip=07666&units=imperial&appid=` + API_KEY 
+
+
 const Location = (props) => {
     // set state
     const [zip, setZip] = useState('')

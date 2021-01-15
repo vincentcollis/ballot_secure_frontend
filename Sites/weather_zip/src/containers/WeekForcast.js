@@ -4,9 +4,8 @@ import styled from 'styled-components'
 import Day from '../components/Day'
 
 const Layout = styled.div`
-    display: flexbox;
+    display: flex;
     flex-direction: column;
-    box-sizing:border-box;
 `
 
 function WeekForcast(props){
@@ -23,10 +22,15 @@ function WeekForcast(props){
     ]
 
     return(
-        <Layout>
-            {weekInfo.map((info, i) => <Day key = {i} name = {info.name} date = {info.date} temp = {info.temp}/>)}
+        <Layout id="week_container">
+            {weekInfo.map((info, i) => <Day 
+                key = {i}
+                position = {i} 
+                name = {info.name} 
+                date = {info.date} 
+                temp = {info.temp}
+            />)}
         </Layout>
-        
     )
 }
 
