@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 // import GlobalStyle from './GlobalStyles'
 import Layout from './containers/Layout'
 
@@ -19,4 +20,5 @@ function App() {
   );
 }
 
-export default App;
+
+export default (App);

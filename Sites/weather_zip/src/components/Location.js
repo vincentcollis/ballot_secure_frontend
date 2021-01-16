@@ -43,4 +43,19 @@ const Location = (props) => {
     )
 }
 
-export default Location;
+
+function mapStateToProps(state){
+    return {
+      currentZip: state.currentZip
+    }
+  }
+  
+function mapDispatchToProps(dispatch){
+return {
+    setZip: (userObj) => {
+    dispatch({type: "SET_ZIP", payload: userObj})
+    }
+}
+}
+
+export default connect()(Location);
