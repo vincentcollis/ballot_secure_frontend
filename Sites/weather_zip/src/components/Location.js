@@ -26,7 +26,14 @@ export default function Location (props){
     // fetch data and set state in App.js
     function submitHandler(event){
         event.preventDefault()
-        fetchData(input)
+        const input = event.target[0].value
+        
+        // const errors = []
+        // console.log(event.target[0].value.length)
+        if( input.length === 5) return fetchData(input)
+        
+        // errors.push("Zip code must be 5 charecters long")
+        // return errors
     }
 
     

@@ -29,15 +29,19 @@ function App() {
     setTemp(payload.main.temp)
     setFeelsLike(payload.main.feels_like)
     
-    console.log(`${zip} ${name} ${description} ${temp} ${feelsLike}`)
   }
-
+  // console.log(`${zip} ${name} ${description} ${temp} ${feelsLike}`)
+  
   return (
     <>
       {/* <GlobalStyle/> */}
       <Layout>
         <Location fetchData = {fetchData} zip = {zip} setZip = {setZip}/>
-        <TodayForcast/>
+        <TodayForcast 
+          description = {description}
+          temp = {temp}
+          feelsLike = {feelsLike}
+        />
         {/* <WeekForcast/> */}
       </Layout>
     </>
